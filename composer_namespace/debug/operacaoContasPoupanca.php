@@ -3,26 +3,49 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use User\DockerPhpMysql\ContasTipo\ContaPoupanca;
+use User\DockerPhpMysql\Contratos\DadosContaBancariaInterface;
+use User\DockerPhpMysql\Contratos\OperacoesContaBancariaInterface;
+
+function executarOperacoes(OperacoesContaBancariaInterface $conta): void
+{
+    echo $conta->obterSaldo();
+    echo PHP_EOL;
+
+    echo $conta->depositar(50);
+    echo PHP_EOL;
+    
+    echo $conta->obterSaldo();
+    echo PHP_EOL;
+    
+    echo $conta->sacar(30);
+    echo PHP_EOL;
+    
+    echo $conta->obterSaldo();
+    echo PHP_EOL;
+}
+
+function exibirDados(DadosContaBancariaInterface $conta): void
+{    
+    echo "Banco: " . $conta->getBanco();
+    echo PHP_EOL;
+    
+    echo "Ag./Conta: " . $conta->getNumeroAgencia() . "/" . $conta->getNumeroConta();
+    echo PHP_EOL;
+
+    echo "Titular: " . $conta->getNomeTitular();
+    echo PHP_EOL;
+
+    echo "--------------------------------------------";
+    echo PHP_EOL;
+}
 
 $conta = new ContaPoupanca(
-    'Banco do Brasil', // banco
-    'Eduardo Barbosa', // nomeTitular
-    '8244', // numeroAgencia
-    '57354-10', // numeroConta
-    0 // saldo
+    'Banco do Brasil', 
+    'Eduardo Barbosa Bernardes', 
+    '8244', 
+    '57354-10', 
+    0 
 );
 
-echo $conta->obterSaldo();
-echo PHP_EOL;
-
-echo $conta->depositar(50);
-echo PHP_EOL;
-
-echo $conta->obterSaldo();
-echo PHP_EOL;
-
-echo $conta->sacar(30);
-echo PHP_EOL;
-
-echo $conta->obterSaldo();
-echo PHP_EOL;
+exibirDados($conta);
+executarOperacoes($conta);

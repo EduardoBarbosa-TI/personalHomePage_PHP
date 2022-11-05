@@ -5,9 +5,11 @@ declare(strict_types=1);
 
 namespace User\DockerPhpMysql;
 
+use User\DockerPhpMysql\Contratos\DadosContaBancariaInterface;
+use User\DockerPhpMysql\Contratos\OperacoesContaBancariaInterface;
 
 
-abstract class ContaBancaria{
+abstract class ContaBancaria implements DadosContaBancariaInterface, OperacoesContaBancariaInterface{
 
     protected string $banco;  
     protected string $nomeTitular;
