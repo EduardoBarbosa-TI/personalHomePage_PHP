@@ -1,0 +1,17 @@
+{
+    "name": "user/programacao_orientada_a_objetos",
+    "description": "estudando compose e seus namespace",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "User\\ProgramacaoOrientadaAObjetos\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "eduardobarbosa-ti",
+            "email": "eduardobb@rede.ulbra.br"
+        }
+    ],
+    "require": {}
+}
